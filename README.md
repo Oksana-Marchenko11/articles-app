@@ -1,73 +1,51 @@
-# React + TypeScript + Vite
+# Article Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple React application for browsing and filtering articles. It is built using **TypeScript**, **Material UI**, and **SCSS** for styling.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Home Page**
 
-## React Compiler
+  - Displays article cards with the title, publication date, and a short summary (up to 100 characters).
+  - Users can click on a card to navigate to the Article Page for full details.
+  - Includes a search input to filter articles by keywords in the **title** or **summary**.
+  - Articles are prioritized: matches in the **title** appear before matches in the **summary**.
+  - Matched keywords are highlighted in yellow.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Article Page**
 
-## Expanding the ESLint configuration
+  - Displays the article title, full summary, and image (if available).
+  - "Back to homepage" button for navigation.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Custom Hook**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+  - `useArticles` demonstrates a simple **custom hook** for fetching articles with loading and error states.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Material UI**
+  - Used for consistent styling of buttons, typography, cards, and input fields.
+  - SCSS is used to handle layout and additional styles not covered by MUI.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## State Management
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This application does not use global state (like Redux or Context API) because all state is local to components:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- The article list is fetched and filtered within the Home Page using the `useArticles` hook.
+- Search input state (`query`) is local to the Home Page component.
+- Individual article data is fetched and managed in the Article Page component.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+> Global state would only be necessary if multiple components needed to **share and update the same data** simultaneously. In this project, local state is sufficient and keeps the implementation simple.  
+> If the app were to grow, **Redux or Context** would be a good choice.
+
+## Technologies Used
+
+- React + TypeScript
+- Material UI
+- SCSS
+- React Router
+- Custom Hooks
+
+## Notes
+
+- Cards are responsive with a grid layout: 3 columns on desktop, 2 on tablet, and 1 on mobile.
+- Buttons and typography use MUI components for consistent design.
+- Highlighting of search terms is handled in `ArticleCard` by splitting text and wrapping matched words with a yellow background.
