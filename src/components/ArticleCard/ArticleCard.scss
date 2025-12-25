@@ -1,4 +1,6 @@
 .article-card {
+  display: flex;
+  flex-direction: column;
   border: 1px solid #eaeaea;
   border-radius: 5px;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);

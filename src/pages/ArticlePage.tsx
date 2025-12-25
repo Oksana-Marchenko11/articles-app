@@ -11,6 +11,7 @@ import {
   CircularProgress,
   Box,
 } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const ArticlePage = () => {
   const { id } = useParams<{ id: string }>();
@@ -58,7 +59,7 @@ const ArticlePage = () => {
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" mt={6}>
+      <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
         <CircularProgress />
       </Box>
     );
@@ -66,7 +67,7 @@ const ArticlePage = () => {
 
   if (error) {
     return (
-      <Typography color="error" align="center" mt={4}>
+      <Typography color="error" align="center" sx={{ mt: 4 }}>
         {error}
       </Typography>
     );
@@ -74,7 +75,7 @@ const ArticlePage = () => {
 
   if (!article) {
     return (
-      <Typography align="center" mt={4}>
+      <Typography align="center" sx={{ mt: 4 }}>
         Стаття не знайдена
       </Typography>
     );
@@ -94,8 +95,8 @@ const ArticlePage = () => {
         <CardContent>
           <Typography
             variant="h4"
-            gutterBottom
             className="article-page__card__title"
+            mb={"25px"}
           >
             {article.title}
           </Typography>
@@ -109,10 +110,15 @@ const ArticlePage = () => {
         component={Link}
         to="/"
         variant="text"
-        className="article-page__back-button"
-        sx={{ color: "#363636", marginLeft: "75px", fontWeight: "700" }}
+        startIcon={<ArrowBackIcon />}
+        sx={{
+          alignSelf: "flex-start",
+          color: "#363636",
+          marginLeft: "75px",
+          fontWeight: "700",
+        }}
       >
-        ← Back to homepage
+        Back to homepage
       </Button>
     </Box>
   );

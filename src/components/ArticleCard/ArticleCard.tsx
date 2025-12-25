@@ -8,6 +8,7 @@ import {
   CardActionArea,
   Button,
 } from "@mui/material";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Link } from "react-router-dom";
 import "./ArticleCard.scss";
 
@@ -51,14 +52,14 @@ const ArticleCard = ({
           />
         )}
         <CardContent className="card-content">
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" mb={1.5}>
             {article.published_at}
           </Typography>
-          <Typography variant="h6" component="h3" gutterBottom>
+          <Typography variant="h5" component="h3" gutterBottom>
             {highlightText(article.title, query)}
           </Typography>
           {shortSummary && (
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body1" color="text.secondary">
               {highlightText(shortSummary, query)}
             </Typography>
           )}
@@ -66,17 +67,20 @@ const ArticleCard = ({
       </CardActionArea>
       <Button
         component={Link}
-        to="`/article/${article.id}`"
+        to={`/article/${article.id}`}
         variant="text"
-        className="article__read-button"
+        endIcon={<ArrowForwardIcon />}
         sx={{
           color: "#363636",
-          fontWeight: "700",
-          padding: "16px",
+          fontWeight: 700,
+          fontSize: "16px",
           fontFamily: "Montserrat, sans-serif",
+          textTransform: "none",
+          marginTop: "auto",
+          alignSelf: "flex-start",
         }}
       >
-        Read more -
+        Read more
       </Button>
     </Card>
   );

@@ -1,5 +1,6 @@
 import type { ForwardedRef } from "react";
 import { forwardRef } from "react";
+import { TextField, Box, Typography } from "@mui/material";
 import "./SearchInput.scss";
 
 interface SearchInputProps {
@@ -19,18 +20,21 @@ const SearchInput = forwardRef(function SearchInput(
   ref: ForwardedRef<HTMLInputElement>
 ) {
   return (
-    <div>
-      <h2>Filter by keywords</h2>
-      <input
-        ref={ref}
-        className="search-input"
+    <Box sx={{ mb: 3 }}>
+      <Typography variant="h6" gutterBottom>
+        Filter by keywords
+      </Typography>
+      <TextField
+        fullWidth
         type="search"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         aria-label={ariaLabel}
+        inputRef={ref}
+        className="search-input"
       />
-    </div>
+    </Box>
   );
 });
 

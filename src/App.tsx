@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import ArticlePage from "./pages/ArticlePage";
-// import { ArticlesProvider } from "./context/ArticlesContext";
 
 const App: React.FC = () => {
   return (
