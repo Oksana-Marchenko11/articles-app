@@ -1,6 +1,7 @@
 import type { ForwardedRef } from "react";
 import { forwardRef } from "react";
-import { TextField, Box, Typography } from "@mui/material";
+import { TextField, Box, Typography, InputAdornment } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import "./SearchInput.scss";
 
 interface SearchInputProps {
@@ -33,6 +34,15 @@ const SearchInput = forwardRef(function SearchInput(
         aria-label={ariaLabel}
         inputRef={ref}
         className="search-input"
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon color="action" sx={{ opacity: 0.6 }} />
+              </InputAdornment>
+            ),
+          },
+        }}
       />
     </Box>
   );
