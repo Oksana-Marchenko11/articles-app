@@ -80,6 +80,7 @@ const ArticleCard = ({
           textTransform: "none",
           marginTop: "auto",
           alignSelf: "flex-start",
+          pl: "16px",
         }}
       >
         Read more
