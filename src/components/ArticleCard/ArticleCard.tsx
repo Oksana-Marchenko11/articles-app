@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Link } from "react-router-dom";
-import "./ArticleCard.scss";
 
 const ArticleCard = ({
   article,
@@ -19,14 +18,17 @@ const ArticleCard = ({
   article: Article;
   query: string;
 }) => {
+  const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
   const highlightText = (text: string, query: string) => {
     if (!query) return text;
 
-    const regex = new RegExp(`(${query})`, "gi");
-    const parts = text.split(regex);
+    const escaped = escapeRegExp(query);
+    const parts = text.split(new RegExp(`(${escaped})`, "i"));
+    const lowerQuery = query.toLowerCase();
 
     return parts.map((part, index) =>
-      regex.test(part) ? (
+      part.toLowerCase().includes(lowerQuery) ? (
         <span key={index} style={{ backgroundColor: "yellow" }}>
           {part}
         </span>
