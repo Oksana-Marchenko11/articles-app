@@ -121,8 +121,11 @@ const ArticlePage = () => {
         sx={{
           alignSelf: "flex-start",
           color: "#363636",
-          marginLeft: "75px",
           fontWeight: "700",
+          ml: {
+            xs: "40px",
+            sm: "150px",
+          },
         }}
       >
         Back to homepage
