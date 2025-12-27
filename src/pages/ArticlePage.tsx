@@ -92,7 +92,14 @@ const ArticlePage = () => {
       )}
 
       <Card className="article-page__card">
-        <CardContent>
+        <CardContent
+          sx={{
+            p: 0,
+            "&:last-child": {
+              pb: 0,
+            },
+          }}
+        >
           <Typography
             variant="h4"
             className="article-page__card__title"

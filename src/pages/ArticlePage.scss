@@ -4,8 +4,7 @@
   align-items: center;
   background-color: #f8f8f8;
   min-height: 100vh;
-  padding-left: 75px;
-  padding-right: 75px;
+  padding-bottom: 45px;
 
   &__image {
     width: 100%;
@@ -14,7 +13,7 @@
   }
 
   &__card {
-    margin: -80px auto 35px;
+    margin: -80px 75px 0px 75px;
     padding: 35px 75px 50px 75px;
     background-color: #ffffff;
     border: 1px solid #eaeaea;
@@ -22,8 +21,8 @@
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
 
     @media (max-width: 768px) {
-      margin: -40px 16px 0;
-      padding: 20px;
+      margin: -40px 20px 0px 20px;
+      padding: 17px 20px 20px 20px;
     }
 
     &__title {
