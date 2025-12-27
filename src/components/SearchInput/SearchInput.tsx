@@ -14,8 +14,8 @@ const SearchInput = forwardRef(function SearchInput(
   {
     value,
     onChange,
-    placeholder = "Пошук статей...",
-    ariaLabel = "Пошук статей",
+    placeholder = "Search articles...",
+    ariaLabel = "Search articles",
   }: SearchInputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) {

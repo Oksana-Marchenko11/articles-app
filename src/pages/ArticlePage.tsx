@@ -22,7 +22,7 @@ const ArticlePage = () => {
 
   useEffect(() => {
     if (!id || isNaN(Number(id))) {
-      setError("Некоректний ID статті");
+      setError("Invalid article ID");
       setLoading(false);
       return;
     }
@@ -41,7 +41,7 @@ const ArticlePage = () => {
         }
       } catch (err) {
         if (!cancelled) {
-          setError((err as Error).message || "Помилка завантаження статті");
+          setError((err as Error).message || "Failed to load article");
         }
       } finally {
         if (!cancelled) {
@@ -76,7 +76,7 @@ const ArticlePage = () => {
   if (!article) {
     return (
       <Typography align="center" sx={{ mt: 4 }}>
-        Стаття не знайдена
+        Article not found
       </Typography>
     );
   }

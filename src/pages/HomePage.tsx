@@ -56,7 +56,7 @@ const HomePage: FC = () => {
       >
         {loading && (
           <Typography variant="body2" color="text.secondary">
-            Завантаження...
+            Loading...
           </Typography>
         )}
 
